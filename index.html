@@ -418,5 +418,16 @@ function route(){
 window.addEventListener("hashchange", route);
 render(); route();
 </script>
+<script>
+// Published articles open on their own pages
+posts.forEach(p=>{ if(p.published) p.url = p.id + ".html"; });
+const openInPage = openPost;
+openPost = function(id){
+  const p = posts.find(x=>x.id===id);
+  if(p && p.url){ location.href = p.url; return; }
+  openInPage(id);
+};
+route();
+</script>
 </body>
 </html>
