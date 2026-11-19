@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Horn & Diaspora: clear, fair writing on Somalia, Kenya, Ethiopia and the Horn of Africa, and life in the diaspora. By Mohamud Osman.">
+<meta name="author" content="Mohamud Osman">
+<link rel="canonical" href="https://mudu1384-eng.github.io/horn-diaspora/">
+<meta property="og:title" content="Horn & Diaspora — Mohamud Osman">
+<meta property="og:description" content="Clear talk on the Horn of Africa and life in the diaspora.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mudu1384-eng.github.io/horn-diaspora/">
+<title>Horn &amp; Diaspora — Mohamud Osman</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b1f24; --muted:#5d6670; --line:#e4e0d8; --paper:#faf8f4; --card:#ffffff;
+    --accent:#0f6e6a; --accent-2:#c4672b; --soft:#eef5f4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.2}
+
+  /* Header */
+  header{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+  .logo{font-family:Fraunces,serif;font-weight:700;font-size:1.35rem;text-decoration:none}
+  .logo span{color:var(--accent-2)}
+  .nav ul{display:flex;gap:22px;list-style:none}
+  .nav ul a{text-decoration:none;font-size:.95rem;color:var(--muted);font-weight:500}
+  .nav ul a:hover{color:var(--accent)}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:8px;padding:10px 18px;font:600 .95rem Inter,sans-serif;cursor:pointer;text-decoration:none}
+  .btn:hover{background:#0b5653}
+  .btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+  .menu-btn{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer}
+
+  /* Hero */
+  .hero{padding:72px 0 56px;display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+  .eyebrow{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);font-weight:600}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.4rem);margin:12px 0 16px}
+  .hero p{color:var(--muted);font-size:1.1rem;max-width:520px}
+  .so{font-style:italic;color:var(--accent);margin-top:10px}
+  .hero .actions{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+  .hero-art{background:var(--soft);border-radius:18px;aspect-ratio:1/1;display:grid;place-items:center;position:relative;overflow:hidden}
+
+  /* Sections */
+  section{padding:56px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+  .sec-head h2{font-size:1.9rem}
+  .filters{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font:500 .85rem Inter,sans-serif;cursor:pointer;color:var(--muted)}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  .featured{display:grid;grid-template-columns:1fr 1fr;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;margin-bottom:28px}
+  .featured .thumb{min-height:280px}
+  .featured .body{padding:32px}
+  .featured h3{font-size:1.7rem;margin:10px 0}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
+  .card:hover,.featured:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.07)}
+  .card .thumb{height:150px}
+  .card .body{padding:18px 20px 22px}
+  .card h3{font-size:1.2rem;margin:8px 0}
+  .tag{display:inline-block;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
+  .meta{font-size:.82rem;color:var(--muted)}
+  .excerpt{color:var(--muted);font-size:.95rem}
+  .thumb{display:grid;place-items:center}
+
+  /* Podcast */
+  .podcast{background:var(--ink);color:#fff;border-radius:18px;padding:44px;display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center}
+  .podcast h2{font-size:1.8rem}
+  .podcast p{color:#c9ced4}
+  .podcast .btn{background:var(--accent-2)}
+  .mic{width:86px;height:86px;border-radius:50%;background:#2c333b;display:grid;place-items:center}
+
+  /* About */
+  .about{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start}
+  .avatar{width:220px;height:220px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#1d9a8f);display:grid;place-items:center;color:#fff;font:700 4rem Fraunces,serif}
+  .about h2{font-size:1.9rem;margin-bottom:12px}
+  .about p{color:var(--muted);margin-bottom:12px}
+  .pillars{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .pillars span{background:var(--soft);color:var(--accent);padding:6px 12px;border-radius:8px;font-size:.85rem;font-weight:500}
+
+  /* Subscribe */
+  .subscribe{background:var(--soft);border-radius:18px;padding:44px;text-align:center}
+  .subscribe h2{font-size:1.9rem;margin-bottom:8px}
+  .subscribe p{color:var(--muted)}
+  .sub-form{display:flex;gap:10px;max-width:460px;margin:22px auto 0}
+  .sub-form input{flex:1;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font:1rem Inter,sans-serif}
+  .note{margin-top:12px;font-size:.9rem;color:var(--accent);min-height:1.4em}
+
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.9rem;margin-top:30px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  /* Article view */
+  #article{display:none;padding:48px 0 30px}
+  .article{max-width:720px;margin:0 auto}
+  .back{background:none;border:0;color:var(--accent);font:600 .95rem Inter,sans-serif;cursor:pointer;margin-bottom:24px}
+  .article h1{font-size:clamp(2rem,4.5vw,2.8rem);margin:10px 0 12px}
+  .article .thumb{height:300px;border-radius:14px;margin:24px 0}
+  .article-body p{font-size:1.1rem;margin-bottom:18px}
+  .article-body h3{font-size:1.4rem;margin:28px 0 10px}
+  .article-body ul{margin:0 0 18px 22px;font-size:1.05rem}
+  .article-body a{color:var(--accent)}
+  .article-body li{margin-bottom:8px}
+  .draft{background:#fff6ec;border:1px solid #f0d3b5;color:#8a4a1a;padding:12px 16px;border-radius:10px;font-size:.92rem;margin-bottom:22px}
+
+  @media (max-width:860px){
+    .hero,.featured,.about,.podcast{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr 1fr}
+    .hero-art{max-width:340px}
+    .nav ul{display:none;position:absolute;top:66px;left:0;right:0;background:var(--paper);flex-direction:column;padding:16px 22px;border-bottom:1px solid var(--line)}
+    .nav ul.open{display:flex}
+    .menu-btn{display:block}
+    .nav .btn{display:none}
+  }
+  @media (max-width:560px){
+    .grid{grid-template-columns:1fr}
+    .sub-form{flex-direction:column}
+    .podcast,.subscribe{padding:30px 22px}
+    .avatar{width:140px;height:140px;font-size:2.6rem}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo" onclick="showHome()">Horn <span>&amp;</span> Diaspora</a>
+    <ul id="menu">
+      <li><a href="#posts" onclick="goSection('posts')">Articles</a></li>
+      <li><a href="#podcast" onclick="goSection('podcast')">Podcast</a></li>
+      <li><a href="#about" onclick="goSection('about')">About</a></li>
+      <li><a href="#subscribe" onclick="goSection('subscribe')">Subscribe</a></li>
+    </ul>
+    <a href="#subscribe" class="btn" onclick="goSection('subscribe')">Subscribe</a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main id="home">
+  <div class="wrap hero" id="top">
+    <div>
+      <div class="eyebrow">Politics · Society · Diaspora</div>
+      <h1>Clear talk on the Horn of Africa and life in the diaspora.</h1>
+      <p>Simple, honest explainers on Somalia, Kenya, Ethiopia and the region, plus what it means for newcomers building a life in Canada.</p>
+      <p class="so">“Warar cad, fikrad xor ah.” Clear news, free thinking.</p>
+      <div class="actions">
+        <a href="#posts" class="btn" onclick="goSection('posts')">Read the latest</a>
+        <a href="#podcast" class="btn ghost" onclick="goSection('podcast')">Listen to the podcast</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 300 300" width="88%">
+        <circle cx="150" cy="150" r="118" fill="#d9ebe9"/>
+        <path d="M150 52 C200 70 222 110 214 150 C206 196 172 228 150 248 C128 226 96 196 88 150 C80 108 104 70 150 52Z" fill="#0f6e6a" opacity=".85"/>
+        <path d="M118 120 L182 120 M108 150 L192 150 M118 180 L182 180" stroke="#faf8f4" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="226" cy="84" r="20" fill="#c4672b"/>
+        <circle cx="78" cy="220" r="12" fill="#c4672b" opacity=".7"/>
+      </svg>
+    </div>
+  </div>
+
+  <section id="posts">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Latest articles</h2>
+        <div class="filters" id="filters"></div>
+      </div>
+      <div id="featured"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section id="podcast">
+    <div class="wrap">
+      <div class="podcast">
+        <div class="mic" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c4672b" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+        </div>
+        <div>
+          <h2>Inside the Horn &amp; Middle East</h2>
+          <p>My podcast on regional politics, told in a fresh animated style. Each episode comes with a written article here on the blog.</p>
+        </div>
+        <a class="btn" href="#podcast">Coming soon</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div class="avatar">MO</div>
+      <div>
+        <h2>About Mohamud</h2>
+        <p>I was born in Somalia, grew up in North Eastern Kenya and moved to Canada in 2019. I live in Ottawa, where I study accounting and work full time.</p>
+        <p>I write about politics and social issues because people in my community deserve news that is clear, fair and easy to read, in English and in Somali. I separate facts from opinion, link my sources and correct my mistakes openly.</p>
+        <div class="pillars"><span>Somalia</span><span>Kenya</span><span>Ethiopia</span><span>Horn of Africa</span><span>Newcomers in Canada</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="subscribe">
+    <div class="wrap">
+      <div class="subscribe">
+        <h2>Get new articles by email</h2>
+        <p>One email when a new article comes out. No spam.</p>
+        <form class="sub-form" onsubmit="subscribe(event)">
+          <input type="email" id="email" placeholder="you@example.com" required aria-label="Email address">
+          <button class="btn" type="submit">Subscribe</button>
+        </form>
+        <div class="note" id="note"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="article"><div class="wrap"><div class="article" id="article-inner"></div></div></div>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Mohamud Osman · Horn &amp; Diaspora · Ottawa, Canada</div>
+    <div>Facts first. Opinions labelled.</div>
+  </div>
+</footer>
+
+<script>
+const posts = [
+  {
+    id:"hassan-sheikh-uae", tag:"Somalia", date:"Nov 19, 2026", read:"6 min", published:true,
+    title:"Hassan Sheikh Mohamud accuses the UAE: what was said and why it matters",
+    excerpt:"Somalia's president made five accusations against Abu Dhabi on 17 November, and the UAE hit back the next day. Here is what both sides said and why it matters.",
+    color:["#1b1f24","#0f6e6a"], featured:true, art:"flags",
+    body:`<p>On Tuesday, 17 November 2026, Somali President Hassan Sheikh Mohamud made his strongest public attack yet on the United Arab Emirates. In a recorded video address to Somalis at home and abroad, he accused Abu Dhabi of years of interference in Somalia's internal affairs. He said Somalia will defend its sovereignty, but that the door to better relations is still open.</p>
+<p>The address comes ten months after Somalia's cabinet cancelled all agreements with the UAE on 12 January 2026.</p>
+<h3>What the president said</h3>
+<p>He made five main accusations (<a href="https://www.dawan.africa/news/somalia-warns-uae-it-will-defend-sovereignty-accuses-abu-dhabi-of-undermining-national-unity">Dawan</a>):</p>
+<ol style="margin:0 0 18px 22px;font-size:1.05rem">
+<li><strong>Port deals without Mogadishu.</strong> The UAE signed agreements on Berbera, Bosaso and Kismayo ports directly with regional administrations, without federal approval.</li>
+<li><strong>Military bases.</strong> The UAE set up bases and security forces outside Somalia's national security system (<a href="https://www.turkiyetoday.com/world/somali-president-accuses-uae-of-blatant-interference-in-internal-affairs-3232654">Türkiye Today</a>).</li>
+<li><strong>Backing regional leaders.</strong> Abu Dhabi gave political and financial support to some regional administrations to encourage opposition to Mogadishu.</li>
+<li><strong>Somaliland.</strong> The UAE played a major role in Israel's recognition of Somaliland and refused to sign Arab and Muslim statements condemning it (<a href="https://www.dawan.africa/news/uae-played-major-role-in-israels-recognition-of-somaliland-somalias-president-says">Dawan</a>).</li>
+<li><strong>Berbera transit.</strong> In January the UAE secretly used Berbera to move a separatist leader fleeing Yemen, without telling Somalia's government.</li>
+</ol>
+<p>He also said the UAE left Libya and Yemen divided and now wants the same for Sudan and Somalia (<a href="https://www.dawan.africa/news/somali-president-says-uae-wants-sudan-and-somalia-divided-after-libya-and-yemen">Dawan</a>). He stressed that his dispute is with the Emirati government, not Emirati people or Somalis living in the UAE.</p>
+<p>The same day, Defence Minister Ahmed Moallim Fiqi called for media outlets he said work for the UAE to be shut down. He named no outlets and gave no evidence (<a href="https://www.dawan.africa/news/somalias-defence-minister-calls-for-closure-of-uae-linked-media-outlets">Dawan</a>).</p>
+<h3>The UAE's side</h3>
+<p>The UAE answered the next day. On 18 November, Anwar Gargash, diplomatic adviser to the UAE President, said on X that the speech reflected the president's "frequent shifts" in position. He questioned whether Hassan Sheikh was putting personal interests ahead of Somalia's, and said it was regrettable that domestic power struggles were being drawn into regional disputes. He added that the UAE's ties with the Somali people run deeper than temporary political disagreements (<a href="https://raxanreeb.com/uae-hits-back-after-somali-presidents-strong-accusations/">Raxanreeb</a>).</p>
+<p>When Somalia accused it of interference in 2018, the UAE denied the charge. In January 2026 it signed a joint statement with the African Union supporting Somalia's sovereignty and territorial integrity (<a href="https://www.aljazeera.com/news/2026/1/12/somalia-cancels-all-agreements-with-uae-over-alleged-sovereignty-violations">Al Jazeera</a>).</p>
+<p>Not all Somalis agree with Mogadishu either. After the January decision, at least three Somali regions publicly rejected cutting ties with the UAE (<a href="https://www.africanews.com/2026/01/14/somalia-cancels-uae-agreements-over-sovereignty-concerns/">Africanews</a>).</p>
+<h3>How we got here</h3>
+<p>Berbera is in Somaliland, which declared independence in 1991 but is not widely recognised. Bosaso is in Puntland and Kismayo is in Jubaland, two states that often clash with Mogadishu. Dubai-based DP World runs Berbera port under a long-term concession. The current crisis began after Israel recognised Somaliland in December 2025.</p>
+<h3>Why it matters</h3>
+<p>This touches the biggest question in Somali politics: who speaks for Somalia, the federal government or the regional states? Turkey, Egypt, Saudi Arabia and the UAE all compete for influence in the Horn.</p>
+<p><em>Read my opinion on this: <a href="#hassan-uae-u-turn">Hassan Sheikh's U-turn on the UAE</a>.</em></p>`
+  },
+  {
+    id:"hassan-uae-u-turn", tag:"Opinion", date:"Nov 19, 2026", read:"4 min", published:true,
+    title:"Opinion: Hassan Sheikh's U-turn on the UAE",
+    excerpt:"The president who brought the UAE back now calls it a danger to Somalia's sovereignty. Somalis deserve to know what changed.",
+    color:["#8a2f3c","#c4672b"], art:"flags",
+    body:`<p><em>This is an opinion piece. For the facts of the president's 17 November address and the UAE's reply, read <a href="#hassan-sheikh-uae">Hassan Sheikh Mohamud accuses the UAE</a>.</em></p>
+<p>This is a clear U-turn, and it is hard to take seriously. In June 2022, a month after taking office, Hassan Sheikh made the UAE his first foreign trip, the first visit by a Somali president in nearly five years (<a href="https://hiiraan.com/news4/2022/Jun/186741/president_hassan_sheikh_held_talks_with_uae_counterpart_for_first_state_visit_during_second_term.aspx">Hiiraan Online</a>). His government also returned the roughly $9 million that Farmajo's government had seized from an Emirati plane in 2018.</p>
+<p>The complaints he makes today are almost the same ones Farmajo made in 2018. Back then, Mogadishu accused the UAE of funding its rivals and stirring up opposition in the federal states (<a href="https://www.crisisgroup.org/node/5774">International Crisis Group</a>). Hassan Sheikh was in opposition at the time, and he was among the opposition leaders who publicly defended the UAE against those very charges. When he came to power, he brought the UAE back. Emirati training and pay for Somali army cadets, stopped during the 2018 quarrel, restarted under him. As recently as March 2025, he flew to Abu Dhabi to meet the UAE president (<a href="https://hornobserver.com/articles/3809/Hassan-Sheikh-Knew-About-the-UAE-for-Years-Now-It-Is-Useful">Horn Observer</a>).</p>
+<p>Even the UAE has seized on this. Its presidential adviser Anwar Gargash answered the speech by pointing to the president's "frequent shifts" in position (<a href="https://raxanreeb.com/uae-hits-back-after-somali-presidents-strong-accusations/">Raxanreeb</a>). When your opponent's best reply is your own record, that is a problem.</p>
+<p>His supporters will say that Israel's recognition of Somaliland changed everything, and that a leader should change course when the facts change. That is a fair point. But Somalis deserve a clear answer: why was the same behaviour acceptable in 2022 and a danger to our sovereignty in 2026? Until the president explains that U-turn, many will ask whether this is about protecting Somalia or about politics in the final year of his term.</p>`
+  },
+  {
+    id:"ethiopia-sea-access", tag:"Horn of Africa", date:"Nov 18, 2026", read:"6 min",
+    title:"Why does Ethiopia want access to the sea? Explained simply",
+    excerpt:"Ethiopia is one of Africa's biggest countries but has no coastline. Here is why that matters to Somalia, Eritrea and the whole region.",
+    color:["#0f6e6a","#1d9a8f"],
+    body:`<h3>The short answer</h3>
+<p>Ethiopia lost its coastline when Eritrea became independent in 1993. Since then, almost all of its trade goes through ports in neighbouring countries, mostly Djibouti. That costs money and gives other countries a lot of power over Ethiopia's economy.</p>
+<h3>Why it matters to Somalia</h3>
+<p>Any deal that gives Ethiopia a port in the region touches questions of sovereignty, especially for Somalia. This is why the topic causes strong reactions across the Horn.</p>
+<h3>What to watch</h3>
+<ul><li>Talks between governments in the region</li><li>The role of outside powers in the Red Sea</li><li>How ordinary people and trade are affected</li></ul>
+<p><em>Add your sources and your own opinion section here.</em></p>`
+  },
+  {
+    id:"somalia-this-week", tag:"Somalia", date:"Nov 15, 2026", read:"4 min",
+    title:"Somalia this week: what happened and why it matters",
+    excerpt:"A short weekly roundup of the biggest stories from Somalia, explained in plain language.",
+    color:["#c4672b","#e08a4f"],
+    body:`<p>This is your weekly roundup format. Each week, pick three to five stories.</p>
+<h3>For each story</h3>
+<ul><li><strong>What happened</strong>: two or three sentences of facts</li><li><strong>Why it matters</strong>: who is affected</li><li><strong>Source</strong>: link to Reuters, BBC Somali, Al Jazeera or official statements</li></ul>
+<p>End with one line: “What I'm watching next week.”</p>`
+  },
+  {
+    id:"newcomer-cost-of-living", tag:"Diaspora", date:"Nov 10, 2026", read:"5 min",
+    title:"The real cost of living as a newcomer in Ottawa",
+    excerpt:"Rent, groceries, transport and sending money home: an honest look at what newcomers face, and what policy could change.",
+    color:["#3c4a8a","#5b6bb5"],
+    body:`<p>Use your own experience here. Real numbers and real stories are what make readers trust you.</p>
+<h3>Ideas for this post</h3>
+<ul><li>How rent has changed since you arrived in 2019</li><li>Working more than one job to keep up</li><li>Sending money to family back home</li><li>What governments say they are doing, and whether it helps</li></ul>`
+  },
+  {
+    id:"kenya-north-eastern", tag:"Kenya", date:"Nov 5, 2026", read:"5 min",
+    title:"North Eastern Kenya: the region the headlines forget",
+    excerpt:"Garissa, Wajir and Mandera rarely make national news unless something goes wrong. Here's the fuller picture.",
+    color:["#7a5c2e","#a8824a"],
+    body:`<p>You grew up here, so you can write what outsiders can't.</p>
+<h3>Ideas for this post</h3>
+<ul><li>Daily life, business and young people in the region</li><li>Development and infrastructure gaps</li><li>How national politics reaches (or doesn't reach) the north east</li></ul>`
+  },
+  {
+    id:"canada-immigration-policy", tag:"Canada", date:"Oct 30, 2026", read:"6 min",
+    title:"Canada's immigration changes: what they mean for families",
+    excerpt:"New rules and targets affect students, workers and families waiting to reunite. A plain-English guide.",
+    color:["#8a2f3c","#b5505e"],
+    body:`<p>Explain the latest federal immigration announcements in simple language. Always link the official Government of Canada page so readers can check for themselves.</p>
+<h3>Structure</h3>
+<ul><li>What changed</li><li>Who it affects</li><li>What people in the community are saying</li><li>Your opinion, clearly labelled</li></ul>`
+  },
+  {
+    id:"youth-and-politics", tag:"Society", date:"Oct 24, 2026", read:"4 min",
+    title:"Why young Somalis should care about politics, at home and abroad",
+    excerpt:"Elections, local councils and community groups: how young people in the diaspora can make their voices count.",
+    color:["#2f6b3f","#4d9460"],
+    body:`<p>An opinion piece speaking directly to younger readers.</p>
+<h3>Points to cover</h3>
+<ul><li>How to register and vote in Canada</li><li>Getting involved in community organizations</li><li>Staying informed about the Horn without the noise of social media</li></ul>`
+  }
+];
+
+const tags = ["All", ...new Set(posts.map(p=>p.tag))];
+let active = "All";
+
+function star(cx,cy,r){
+  let pts=[];
+  for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5, rr=i%2?r*0.382:r;
+    pts.push((cx+rr*Math.cos(a)).toFixed(1)+","+(cy+rr*Math.sin(a)).toFixed(1));}
+  return pts.join(" ");
+}
+function flags(){
+  return `<svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" role="img" aria-label="Flags of Somalia and the United Arab Emirates">
+    <rect width="600" height="340" fill="#1b1f24"/>
+    <g transform="translate(40,95) rotate(-3 120 75)">
+      <rect width="240" height="150" fill="#4189DD" rx="4"/>
+      <polygon points="${star(120,75,42)}" fill="#fff"/>
+    </g>
+    <g transform="translate(320,95) rotate(3 120 75)">
+      <rect width="240" height="150" fill="#fff" rx="4"/>
+      <rect x="60" width="180" height="50" fill="#00732F"/>
+      <rect x="60" y="100" width="180" height="50" fill="#000"/>
+      <rect width="60" height="150" fill="#FF0000"/>
+    </g>
+    <text x="300" y="300" text-anchor="middle" fill="#c9ced4" font-family="Inter,sans-serif" font-size="16" letter-spacing="3">SOMALIA · UAE</text>
+  </svg>`;
+}
+function thumb(p, cls="thumb"){
+  if(p.art==="flags") return `<div class="${cls}" style="background:#1b1f24;overflow:hidden">${flags()}</div>`;
+  return `<div class="${cls}" style="background:linear-gradient(135deg,${p.color[0]},${p.color[1]})">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.4"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></div>`;
+}
+
+function render(){
+  document.getElementById("filters").innerHTML = tags.map(t=>
+    `<button class="chip ${t===active?'on':''}" onclick="setTag('${t}')">${t}</button>`).join("");
+  const list = posts.filter(p=>active==="All"||p.tag===active);
+  const feat = active==="All" ? list.find(p=>p.featured) : null;
+  const rest = list.filter(p=>p!==feat);
+  document.getElementById("featured").innerHTML = feat ? `
+    <article class="featured" onclick="openPost('${feat.id}')">
+      ${thumb(feat)}
+      <div class="body"><span class="tag">Featured · ${feat.tag}</span>
+        <h3>${feat.title}</h3><p class="excerpt">${feat.excerpt}</p>
+        <p class="meta" style="margin-top:14px">${feat.date} · ${feat.read} read</p></div>
+    </article>` : "";
+  document.getElementById("grid").innerHTML = rest.map(p=>`
+    <article class="card" onclick="openPost('${p.id}')">
+      ${thumb(p)}
+      <div class="body"><span class="tag">${p.tag}</span><h3>${p.title}</h3>
+        <p class="excerpt">${p.excerpt}</p><p class="meta" style="margin-top:10px">${p.date} · ${p.read} read</p></div>
+    </article>`).join("");
+}
+function setTag(t){active=t;render();}
+
+function openPost(id){
+  const p = posts.find(x=>x.id===id); if(!p) return;
+  document.getElementById("article-inner").innerHTML = `
+    <button class="back" onclick="showHome()">← All articles</button>
+    <span class="tag">${p.tag}</span>
+    <h1>${p.title}</h1>
+    <p class="meta">By Mohamud Osman · ${p.date} · ${p.read} read</p>
+    ${thumb(p)}
+    ${p.published ? "" : '<div class="draft">Draft outline: replace this with your finished article.</div>'}
+    <div class="article-body"><p><strong>${p.excerpt}</strong></p>${p.body}</div>`;
+  document.getElementById("home").style.display="none";
+  document.getElementById("article").style.display="block";
+  if(location.hash!=="#"+id) location.hash=id;
+  window.scrollTo(0,0);
+}
+function showHome(){
+  document.getElementById("article").style.display="none";
+  document.getElementById("home").style.display="block";
+}
+function goSection(id){
+  showHome();
+  document.getElementById("menu").classList.remove("open");
+  setTimeout(()=>document.getElementById(id).scrollIntoView({behavior:"smooth"}),10);
+}
+function subscribe(e){
+  e.preventDefault();
+  document.getElementById("note").textContent =
+    "Thanks! Email sign-up will be live once the newsletter is connected.";
+  document.getElementById("email").value="";
+}
+function route(){
+  const h = location.hash.slice(1);
+  if(posts.some(p=>p.id===h)) openPost(h); else showHome();
+}
+window.addEventListener("hashchange", route);
+render(); route();
+</script>
+</body>
+</html>
