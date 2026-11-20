@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Kamjaroon Online</title>
+  <link>https://kamjaroononline.com/</link>
+  <atom:link href="https://kamjaroononline.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Warar cad, fikrad xor ah. Clear news and analysis on Somalia and the Horn of Africa.</description>
+  <language>so</language>
+  <item>
+    <title>Soomaaliya iyo Imaaraadka Carabta: Is-jiidjiidka siyaasadeed iyo eedeymaha faragelinta</title>
+    <link>https://kamjaroononline.com/soomaaliya-imaaraadka.html</link>
+    <guid>https://kamjaroononline.com/soomaaliya-imaaraadka.html</guid>
+    <pubDate>Fri, 20 Nov 2026 08:00:00 GMT</pubDate>
+    <description>Warbixin dhammaystiran oo ku saabsan khilaafka Soomaaliya iyo Imaaraadka.</description>
+  </item>
+  <item>
+    <title>Hassan Sheikh Mohamud accuses the UAE: what was said and why it matters</title>
+    <link>https://kamjaroononline.com/hassan-sheikh-uae.html</link>
+    <guid>https://kamjaroononline.com/hassan-sheikh-uae.html</guid>
+    <pubDate>Thu, 19 Nov 2026 14:00:00 GMT</pubDate>
+    <description>What both sides said after the 17 November address, and why it matters.</description>
+  </item>
+  <item>
+    <title>Opinion: Hassan Sheikh's U-turn on the UAE</title>
+    <link>https://kamjaroononline.com/hassan-uae-u-turn.html</link>
+    <guid>https://kamjaroononline.com/hassan-uae-u-turn.html</guid>
+    <pubDate>Thu, 19 Nov 2026 13:00:00 GMT</pubDate>
+    <description>An opinion piece on the shifting Somalia–UAE relationship.</description>
+  </item>
+</channel>
+</rss>
