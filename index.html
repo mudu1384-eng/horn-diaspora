@@ -317,10 +317,17 @@
 <script>
 const posts = [
   {
+    id:"axmed-madoobe", tag:"Somalia", date:"Nov 20, 2026", read:"9 min", published:true, url:"axmed-madoobe.html",
+    title:"Axmed Madoobe iyo Xasan Sheekh: Khudbaddii Kismaayo, eedeymaha iyo su’aasha dowladnimada",
+    excerpt:"Warbixin (Af-Soomaali): khudbaddii Axmed Madoobe ee Kismaayo, taariikhdiisa, 14 sano oo uu Jubbaland xukumayay, eedeymaha dhaleeceeyayaashiisa iyo doodaha taageerayaashiisa.",
+    color:["#1b1f24","#0f6e6a"], featured:true, img:"axmed-madoobe.webp",
+    body:`<p><a href="axmed-madoobe.html">Akhri warbixinta oo dhan</a></p>`
+  },
+  {
     id:"soomaaliya-imaaraadka", tag:"Somalia", date:"Nov 20, 2026", read:"10 min", published:true, url:"soomaaliya-imaaraadka.html",
     title:"Soomaaliya iyo Imaaraadka Carabta: Is-jiidjiidka siyaasadeed iyo eedeymaha faragelinta",
     excerpt:"Warbixin dhammaystiran (Af-Soomaali): taariikhda xiriirka, buriskii heshiisyada 2026, eedeymaha labada dhinac, mawqifka maamul goboleedyada iyo waxa xiga.",
-    color:["#0f6e6a","#1b1f24"], featured:true, art:"flags",
+    color:["#0f6e6a","#1b1f24"], art:"flags",
     body:`<p><a href="soomaaliya-imaaraadka.html">Akhri warbixinta oo dhan</a></p>`
   },
   {
@@ -481,6 +488,7 @@ function flags(){
   </svg>`;
 }
 function thumb(p, cls="thumb"){
+  if(p.img) return `<div class="${cls}" style="background:#1b1f24 url(${p.img}) center/cover no-repeat"></div>`;
   if(p.art==="flags") return `<div class="${cls}" style="background:#1b1f24;overflow:hidden">${flags()}</div>`;
   return `<div class="${cls}" style="background:linear-gradient(135deg,${p.color[0]},${p.color[1]})">
     <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.4"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></div>`;
