@@ -3,8 +3,8 @@
   var lang = "so";
   try { lang = localStorage.getItem("kj-lang") || "so"; } catch (e) {}
   var T = lang === "en"
-    ? { home: "Home", news: "News", share: "Share", copy: "Copy link", copied: "Copied!", size: "Font size" }
-    : { home: "Hoyga", news: "Wararka", share: "La wadaag", copy: "Koobiyee link-ga", copied: "Waa la koobiyeeyay!", size: "Cabbirka qoraalka" };
+    ? { home: "Home", news: "News", share: "Share", copy: "Copy Link", copied: "Copied!", size: "Font size" }
+    : { home: "Hoyga", news: "Wararka", share: "La wadaag", copy: "Copy Link", copied: "Copied!", size: "Cabbirka qoraalka" };
 
   var art = document.querySelector(".article");
   var meta = art && art.querySelector(".meta");
@@ -15,9 +15,9 @@
     ".crumb{font-size:.85rem;color:var(--muted);margin-bottom:14px}" +
     ".crumb a{color:var(--accent);text-decoration:none;font-weight:600}" +
     ".crumb a:hover{text-decoration:underline}" +
-    ".sharebar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0 6px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}" +
+    ".sharebar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:18px 0 6px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}" +
     ".sharebar .lbl{font:700 .72rem Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}" +
-    ".sharebar a,.sharebar button{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:34px;min-width:34px;padding:0 10px;border-radius:8px;border:0;color:#fff;text-decoration:none;font:600 .8rem Inter,sans-serif;cursor:pointer;transition:transform .15s,opacity .15s}" +
+    ".sharebar a,.sharebar button{display:inline-flex;align-items:center;justify-content:center;gap:5px;height:32px;min-width:32px;padding:0 9px;border-radius:8px;border:0;color:#fff;text-decoration:none;font:600 .8rem Inter,sans-serif;cursor:pointer;transition:transform .15s,opacity .15s}" +
     ".sharebar a:hover,.sharebar button:hover{transform:translateY(-2px);opacity:.92}" +
     ".sharebar svg{width:16px;height:16px;fill:currentColor}" +
     ".sharebar .fsz{margin-left:auto;display:flex;gap:4px;align-items:center}" +
