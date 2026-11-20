@@ -160,6 +160,10 @@
     .podcast,.subscribe{padding:30px 22px}
     .avatar{width:140px;height:140px;font-size:2.6rem}
   }
+  #videos .vid{position:relative;width:100%;max-width:860px;margin:18px auto 0;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+  #videos .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  #videos .vid-head{text-align:center}
+  #videos .vid-head .btn{margin-top:14px;background:#c4302b}
 </style>
 </head>
 <body>
@@ -190,6 +194,7 @@
   <li><a href="#" data-cat="siyaasadda" onclick="nav('siyaasadda');return false;" data-so="Siyaasadda" data-en="Politics">Siyaasadda</a></li>
   <li><a href="#" data-cat="aragtida" onclick="nav('aragtida');return false;" data-so="Aragtida" data-en="Opinion">Aragtida</a></li>
   <li><a href="#podcast" onclick="goSection('podcast')" data-so="Podkaas" data-en="Podcast">Podkaas</a></li>
+  <li><a href="#videos" onclick="goSection('videos')" data-so="Fiidiyowyada" data-en="Videos">Fiidiyowyada</a></li>
   <li><a href="#contact" onclick="goSection('contact')" data-so="Nala Soo Xiriir" data-en="Contact Us">Nala Soo Xiriir</a></li>
 </ul></div></nav>
 <div class="ticker"><div class="wrap"><b data-so="Ugu dambeeyay" data-en="Latest">Ugu dambeeyay</b><div class="run"><span id="ticker"></span></div></div></div>
@@ -233,6 +238,21 @@
           <p data-so="Podkaaskeena siyaasadda gobolka, oo lagu soo bandhigo qaab kartoon cusub. Qayb kasta waxa la socda maqaal qoran oo halkan ku jira." data-en="Our podcast on regional politics, told in a fresh animated style. Each episode comes with a written article here on the blog.">Podkaaskeena siyaasadda gobolka, oo lagu soo bandhigo qaab kartoon cusub. Qayb kasta waxa la socda maqaal qoran oo halkan ku jira.</p>
         </div>
         <a class="btn" href="#podcast" data-so="Dhowaan" data-en="Coming soon">Dhowaan</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <div class="wrap">
+      <div class="vid-head">
+        <h2 data-so="Daawo fiidiyowyadeena" data-en="Watch our videos">Daawo fiidiyowyadeena</h2>
+        <p data-so="Fiidiyowyadii ugu dambeeyay ee kanaalkeena YouTube. Halkan ka daawo." data-en="The latest videos from our YouTube channel. Watch them right here.">Fiidiyowyadii ugu dambeeyay ee kanaalkeena YouTube. Halkan ka daawo.</p>
+      </div>
+      <div class="vid">
+        <iframe src="https://www.youtube.com/embed/videoseries?list=UUFWGC82y3wcfatEldx1u2pQ" title="Kamjaroon Online YouTube videos" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="vid-head">
+        <a class="btn" href="https://www.youtube.com/channel/UCFWGC82y3wcfatEldx1u2pQ?sub_confirmation=1" target="_blank" rel="noopener" data-so="Ku biir kanaalka YouTube" data-en="Subscribe on YouTube">Ku biir kanaalka YouTube</a>
       </div>
     </div>
   </section>
