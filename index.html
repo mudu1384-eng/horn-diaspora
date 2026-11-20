@@ -26,7 +26,41 @@
   h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.2}
 
   /* Header */
-  header{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:10}
+  header{background:var(--paper)}
+  .topbar{background:#0d2b29;color:#cfe3e0;font-size:.8rem}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;min-height:36px;gap:12px}
+  .topbar a{color:#cfe3e0;text-decoration:none}
+  .topbar a:hover{color:#fff}
+  .tools{display:flex;gap:14px;align-items:center}
+  .social{display:flex;gap:12px;align-items:center}
+  .social svg{width:15px;height:15px;fill:currentColor;display:block}
+  .lang{display:flex;border:1px solid rgba(255,255,255,.35);border-radius:999px;overflow:hidden}
+  .lang button{background:none;border:0;color:#cfe3e0;font:700 .7rem Inter,sans-serif;letter-spacing:.06em;padding:4px 11px;cursor:pointer}
+  .lang button.on{background:var(--accent-2);color:#fff}
+  .brand .tagline{font-size:.85rem;color:var(--muted);font-style:italic}
+  .mainnav{background:var(--accent);position:sticky;top:0;z-index:20;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .mainnav ul{display:flex;list-style:none;overflow-x:auto;scrollbar-width:none}
+  .mainnav ul::-webkit-scrollbar{display:none}
+  .mainnav a{display:block;padding:13px 16px;color:#fff;text-decoration:none;font:600 .8rem Inter,sans-serif;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;border-bottom:3px solid transparent}
+  .mainnav a:hover,.mainnav a.on{background:rgba(0,0,0,.18);border-bottom-color:var(--accent-2)}
+  .ticker{background:#fff;border-bottom:1px solid var(--line);font-size:.9rem}
+  .ticker .wrap{display:flex;align-items:center;gap:12px;height:42px}
+  .ticker b{background:var(--accent-2);color:#fff;padding:3px 10px;border-radius:4px;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;flex:none}
+  .ticker .run{white-space:nowrap;overflow:hidden;flex:1}
+  .ticker .run span{display:inline-block;padding-left:100%;animation:tick 45s linear infinite}
+  .ticker .run:hover span{animation-play-state:paused}
+  .ticker a{text-decoration:none;margin-right:44px}
+  .ticker a:before{content:"● ";color:var(--accent-2);font-size:.7em}
+  .ticker a:hover{color:var(--accent)}
+  @keyframes tick{to{transform:translateX(-100%)}}
+  .contact{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+  .contact h2{font-size:1.8rem;margin-bottom:8px}
+  .contact p{color:var(--muted)}
+  .cbox{display:flex;flex-direction:column;gap:14px}
+  .share{display:flex;gap:10px;flex-wrap:wrap}
+  .share a{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:8px;border:1px solid var(--line);text-decoration:none;font:600 .88rem Inter,sans-serif}
+  .share a:hover{border-color:var(--accent);color:var(--accent)}
+  .share svg{width:16px;height:16px;fill:currentColor}
   .nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
   .logo{font-family:Fraunces,serif;font-weight:700;font-size:1.35rem;text-decoration:none}
   .logo span{color:var(--accent-2)}
@@ -116,10 +150,9 @@
     .hero,.featured,.about,.podcast{grid-template-columns:1fr}
     .grid{grid-template-columns:1fr 1fr}
     .hero-art{max-width:340px}
-    .nav ul{display:none;position:absolute;top:66px;left:0;right:0;background:var(--paper);flex-direction:column;padding:16px 22px;border-bottom:1px solid var(--line)}
-    .nav ul.open{display:flex}
-    .menu-btn{display:block}
-    .nav .btn{display:none}
+    .nav .btn,.brand .tagline{display:none}
+    .contact{grid-template-columns:1fr;padding:28px 22px}
+    .topbar .date{display:none}
   }
   @media (max-width:560px){
     .grid{grid-template-columns:1fr}
@@ -131,30 +164,45 @@
 </head>
 <body>
 
+<div class="topbar"><div class="wrap">
+  <span class="date" id="today"></span>
+  <div class="tools">
+    <div class="social">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkamjaroononline.com%2F" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.2-.6.6-.6z"/></svg></a>
+      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fkamjaroononline.com%2F&text=Kamjaroon%20Online" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg></a>
+      <a href="feed.xml" aria-label="RSS"><svg viewBox="0 0 24 24"><path d="M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 10a11 11 0 0 1 11 11h-3a8 8 0 0 0-8-8zm0-6a17 17 0 0 1 17 17h-3A14 14 0 0 0 3 7z"/></svg></a>
+    </div>
+    <div class="lang" role="group" aria-label="Language"><button id="l-so" onclick="setLang('so')">SO</button><button id="l-en" onclick="setLang('en')">EN</button></div>
+  </div>
+</div></div>
 <header>
-  <div class="wrap nav">
-    <a href="#top" class="logo" onclick="showHome()"><span class="camel" aria-hidden="true"></span><span style="color:inherit">Kamjaroon</span> <span>Online</span></a>
-    <ul id="menu">
-      <li><a href="#posts" onclick="goSection('posts')">Articles</a></li>
-      <li><a href="#podcast" onclick="goSection('podcast')">Podcast</a></li>
-      <li><a href="#about" onclick="goSection('about')">About</a></li>
-      <li><a href="#subscribe" onclick="goSection('subscribe')">Subscribe</a></li>
-    </ul>
-    <a href="#subscribe" class="btn" onclick="goSection('subscribe')">Subscribe</a>
-    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+  <div class="wrap nav brand">
+    <a href="#top" class="logo" onclick="nav('all');return false;"><span class="camel" aria-hidden="true"></span><span style="color:inherit">Kamjaroon</span> <span>Online</span></a>
+    <span class="tagline" data-so="Warar cad, fikrad xor ah." data-en="Clear news, free thinking.">Warar cad, fikrad xor ah.</span>
+    <a href="#subscribe" class="btn" onclick="goSection('subscribe')" data-so="Iska diiwaangeli" data-en="Subscribe">Iska diiwaangeli</a>
   </div>
 </header>
+<nav class="mainnav" aria-label="Main"><div class="wrap"><ul id="menu">
+  <li><a href="#" data-cat="all" onclick="nav('all');return false;" data-so="Hoyga" data-en="Home">Hoyga</a></li>
+  <li><a href="#" data-cat="gudaha" onclick="nav('gudaha');return false;" data-so="Wararka Gudaha" data-en="Local News">Wararka Gudaha</a></li>
+  <li><a href="#" data-cat="caalamka" onclick="nav('caalamka');return false;" data-so="Wararka Caalamka" data-en="World News">Wararka Caalamka</a></li>
+  <li><a href="#" data-cat="siyaasadda" onclick="nav('siyaasadda');return false;" data-so="Siyaasadda" data-en="Politics">Siyaasadda</a></li>
+  <li><a href="#" data-cat="aragtida" onclick="nav('aragtida');return false;" data-so="Aragtida" data-en="Opinion">Aragtida</a></li>
+  <li><a href="#podcast" onclick="goSection('podcast')" data-so="Podkaas" data-en="Podcast">Podkaas</a></li>
+  <li><a href="#contact" onclick="goSection('contact')" data-so="Nala Soo Xiriir" data-en="Contact Us">Nala Soo Xiriir</a></li>
+</ul></div></nav>
+<div class="ticker"><div class="wrap"><b data-so="Ugu dambeeyay" data-en="Latest">Ugu dambeeyay</b><div class="run"><span id="ticker"></span></div></div></div>
 
 <main id="home">
   <div class="wrap hero" id="top">
     <div>
-      <div class="eyebrow">Politics · Society · Diaspora</div>
-      <h1>Clear talk on the Horn of Africa and life in the diaspora.</h1>
-      <p>Simple, honest explainers on Somalia, Kenya, Ethiopia and the region, plus what it means for newcomers building a life in Canada.</p>
+      <div class="eyebrow" data-so="Siyaasad · Bulsho · Qurbajoog" data-en="Politics · Society · Diaspora">Siyaasad · Bulsho · Qurbajoog</div>
+      <h1 data-so="Warar cad oo ku saabsan Geeska Afrika iyo nolosha qurbaha." data-en="Clear talk on the Horn of Africa and life in the diaspora.">Warar cad oo ku saabsan Geeska Afrika iyo nolosha qurbaha.</h1>
+      <p data-so="Sharraxaad fudud oo daacad ah oo ku saabsan Soomaaliya, Kenya, Itoobiya iyo gobolka, iyo waxa ay u macno tahay dadka nolol cusub ka dhisanaya Kanada." data-en="Simple, honest explainers on Somalia, Kenya, Ethiopia and the region, plus what it means for newcomers building a life in Canada.">Sharraxaad fudud oo daacad ah oo ku saabsan Soomaaliya, Kenya, Itoobiya iyo gobolka, iyo waxa ay u macno tahay dadka nolol cusub ka dhisanaya Kanada.</p>
       <p class="so">“Warar cad, fikrad xor ah.” Clear news, free thinking.</p>
       <div class="actions">
-        <a href="#posts" class="btn" onclick="goSection('posts')">Read the latest</a>
-        <a href="#podcast" class="btn ghost" onclick="goSection('podcast')">Listen to the podcast</a>
+        <a href="#posts" class="btn" onclick="goSection('posts')" data-so="Akhri wararka cusub" data-en="Read the latest">Akhri wararka cusub</a>
+        <a href="#podcast" class="btn ghost" onclick="goSection('podcast')" data-so="Dhageyso podkaaska" data-en="Listen to the podcast">Dhageyso podkaaska</a>
       </div>
     </div>
     <div class="hero-art" role="img" aria-label="Kamjaroon Online logo: a camel eating leaves from a green acacia tree">
@@ -165,7 +213,7 @@
   <section id="posts">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Latest articles</h2>
+        <h2 id="secTitle">Wararkii ugu dambeeyay</h2>
         <div class="filters" id="filters"></div>
       </div>
       <div id="featured"></div>
@@ -181,9 +229,9 @@
         </div>
         <div>
           <h2>Inside the Horn &amp; Middle East</h2>
-          <p>Our podcast on regional politics, told in a fresh animated style. Each episode comes with a written article here on the blog.</p>
+          <p data-so="Podkaaskeena siyaasadda gobolka, oo lagu soo bandhigo qaab kartoon cusub. Qayb kasta waxa la socda maqaal qoran oo halkan ku jira." data-en="Our podcast on regional politics, told in a fresh animated style. Each episode comes with a written article here on the blog.">Podkaaskeena siyaasadda gobolka, oo lagu soo bandhigo qaab kartoon cusub. Qayb kasta waxa la socda maqaal qoran oo halkan ku jira.</p>
         </div>
-        <a class="btn" href="#podcast">Coming soon</a>
+        <a class="btn" href="#podcast" data-so="Dhowaan" data-en="Coming soon">Dhowaan</a>
       </div>
     </div>
   </section>
@@ -192,11 +240,30 @@
     <div class="wrap about">
       <div class="avatar" style="background:none;padding:0;overflow:hidden"><span class="camel" style="display:block;width:100%;height:100%" aria-hidden="true"></span></div>
       <div>
-        <h2>About Kamjaroon Online</h2>
-        <p>Kamjaroon Online is an independent website for clear, fair news and analysis about Somalia, Kenya, Ethiopia and the wider Horn of Africa, and about life for newcomers in the diaspora.</p>
-        <p>Our goal is to help the community understand what is happening and why it matters. We explain political and social issues in plain language, in English and in Somali, so everyone can follow the news and make up their own mind.</p>
-        <p>We keep facts separate from opinion and label every opinion piece. We link to our sources so readers can check them, and when we make a mistake, we correct it openly.</p>
+        <h2 data-so="Ku saabsan Kamjaroon Online" data-en="About Kamjaroon Online">Ku saabsan Kamjaroon Online</h2>
+        <p data-so="Kamjaroon Online waa website madax-bannaan oo bixiya warar cad oo cadaalad ah iyo falanqayn ku saabsan Soomaaliya, Kenya, Itoobiya iyo Geeska Afrika guud ahaan, iyo nolosha dadka cusub ee qurbaha." data-en="Kamjaroon Online is an independent website for clear, fair news and analysis about Somalia, Kenya, Ethiopia and the wider Horn of Africa, and about life for newcomers in the diaspora.">Kamjaroon Online waa website madax-bannaan oo bixiya warar cad oo cadaalad ah iyo falanqayn ku saabsan Soomaaliya, Kenya, Itoobiya iyo Geeska Afrika guud ahaan, iyo nolosha dadka cusub ee qurbaha.</p>
+        <p data-so="Hadafkeennu waa inaan bulshada ka caawinno inay fahmaan waxa dhacaya iyo sababta ay muhiim u tahay. Arrimaha siyaasadda iyo bulshada waxaan ku sharraxnaa luqad fudud, Af-Soomaali iyo Ingiriisiba, si qof walba u raaco wararka oo uu go'aan u gaaro." data-en="Our goal is to help the community understand what is happening and why it matters. We explain political and social issues in plain language, in English and in Somali, so everyone can follow the news and make up their own mind.">Hadafkeennu waa inaan bulshada ka caawinno inay fahmaan waxa dhacaya iyo sababta ay muhiim u tahay. Arrimaha siyaasadda iyo bulshada waxaan ku sharraxnaa luqad fudud, Af-Soomaali iyo Ingiriisiba, si qof walba u raaco wararka oo uu go'aan u gaaro.</p>
+        <p data-so="Xaqiiqada iyo aragtida waan kala saarnaa, maqaal kasta oo aragti ahna waan calaamadeynaa. Ilaha waan ku xirnaa si akhristuhu u hubiyo, markaan qaladna samayno si furan ayaan u saxnaa." data-en="We keep facts separate from opinion and label every opinion piece. We link to our sources so readers can check them, and when we make a mistake, we correct it openly.">Xaqiiqada iyo aragtida waan kala saarnaa, maqaal kasta oo aragti ahna waan calaamadeynaa. Ilaha waan ku xirnaa si akhristuhu u hubiyo, markaan qaladna samayno si furan ayaan u saxnaa.</p>
         <div class="pillars"><span>Somalia</span><span>Kenya</span><span>Ethiopia</span><span>Horn of Africa</span><span>Newcomers in Canada</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h2 data-so="Nala soo xiriir" data-en="Contact us">Nala soo xiriir</h2>
+          <p data-so="Ma haysaa war, sax, ama fikrad maqaal? Noo soo dir. Waxaan akhrinnaa fariin kasta." data-en="Have a news tip, a correction or an idea for an article? Send it to us. We read every message.">Ma haysaa war, sax, ama fikrad maqaal? Noo soo dir. Waxaan akhrinnaa fariin kasta.</p>
+        </div>
+        <div class="cbox">
+          <a class="btn" href="mailto:info@kamjaroononline.com">info@kamjaroononline.com</a>
+          <div class="share">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkamjaroononline.com%2F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.2-.6.6-.6z"/></svg> Facebook</a>
+            <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fkamjaroononline.com%2F&text=Kamjaroon%20Online" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg> X / Twitter</a>
+            <a href="feed.xml"><svg viewBox="0 0 24 24"><path d="M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 10a11 11 0 0 1 11 11h-3a8 8 0 0 0-8-8zm0-6a17 17 0 0 1 17 17h-3A14 14 0 0 0 3 7z"/></svg> RSS</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -204,11 +271,11 @@
   <section id="subscribe">
     <div class="wrap">
       <div class="subscribe">
-        <h2>Get new articles by email</h2>
-        <p>One email when a new article comes out. No spam.</p>
+        <h2 data-so="Ka hel maqaallada cusub email ahaan" data-en="Get new articles by email">Ka hel maqaallada cusub email ahaan</h2>
+        <p data-so="Hal email marka maqaal cusub soo baxo. Spam ma jiro." data-en="One email when a new article comes out. No spam.">Hal email marka maqaal cusub soo baxo. Spam ma jiro.</p>
         <form class="sub-form" onsubmit="subscribe(event)">
           <input type="email" id="email" placeholder="you@example.com" required aria-label="Email address">
-          <button class="btn" type="submit">Subscribe</button>
+          <button class="btn" type="submit" data-so="Iska diiwaangeli" data-en="Subscribe">Iska diiwaangeli</button>
         </form>
         <div class="note" id="note"></div>
       </div>
@@ -221,7 +288,7 @@
 <footer>
   <div class="wrap">
     <div>© 2026 Kamjaroon Online</div>
-    <div>Facts first. Opinions labelled.</div>
+    <div data-so="Xaqiiqo marka hore. Aragtiyaha waa la calaamadeeyay." data-en="Facts first. Opinions labelled.">Xaqiiqo marka hore. Aragtiyaha waa la calaamadeeyay.</div>
   </div>
 </footer>
 
@@ -336,6 +403,48 @@ const posts = [
 
 const tags = ["All", ...new Set(posts.map(p=>p.tag))];
 let active = "All";
+let cat = "all";
+let lang = "so";
+const POL = new Set(["soomaaliya-imaaraadka","hassan-sheikh-uae","hassan-uae-u-turn","ethiopia-sea-access","somalia-this-week","canada-immigration-policy","youth-and-politics"]);
+const TAG_SO = {"All":"Dhammaan","Somalia":"Soomaaliya","Opinion":"Aragti","Horn of Africa":"Geeska Afrika","Diaspora":"Qurbajoog","Kenya":"Kenya","Canada":"Kanada","Society":"Bulsho"};
+const CAT = {all:["Wararkii ugu dambeeyay","Latest articles"], gudaha:["Wararka Gudaha","Local News"], caalamka:["Wararka Caalamka","World News"], siyaasadda:["Siyaasadda","Politics"], aragtida:["Aragtida","Opinion"]};
+const tagName = t => lang==="so" ? (TAG_SO[t]||t) : t;
+const readWord = () => lang==="so" ? "akhris" : "read";
+function inCat(p){
+  if(cat==="gudaha") return p.tag==="Somalia";
+  if(cat==="caalamka") return p.tag!=="Somalia" && p.tag!=="Opinion";
+  if(cat==="siyaasadda") return POL.has(p.id);
+  if(cat==="aragtida") return p.tag==="Opinion";
+  return true;
+}
+function nav(c){
+  cat=c; active="All";
+  document.querySelectorAll(".mainnav a[data-cat]").forEach(a=>a.classList.toggle("on",a.dataset.cat===c));
+  render();
+  if(c==="all"){ showHome(); window.scrollTo({top:0,behavior:"smooth"}); }
+  else goSection("posts");
+}
+const DAYS_SO=["Axad","Isniin","Talaado","Arbaco","Khamiis","Jimce","Sabti"];
+const MON_SO=["Janaayo","Febraayo","Maarso","Abriil","May","Juun","Luuliyo","Ogost","Sebtembar","Oktoobar","Nofembar","Diseembar"];
+function today(){
+  const d=new Date();
+  return lang==="so" ? `${DAYS_SO[d.getDay()]}, ${d.getDate()} ${MON_SO[d.getMonth()]} ${d.getFullYear()}`
+    : d.toLocaleDateString("en-CA",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+}
+function setLang(l){
+  lang=l;
+  try{localStorage.setItem("kj-lang",l);}catch(e){}
+  document.documentElement.lang=l;
+  document.querySelectorAll("[data-so]").forEach(el=>{el.textContent=el.dataset[l];});
+  document.getElementById("l-so").classList.toggle("on",l==="so");
+  document.getElementById("l-en").classList.toggle("on",l==="en");
+  document.getElementById("today").textContent=today();
+  render();
+}
+function ticker(){
+  const items = posts.filter(p=>p.published).concat(posts.filter(p=>!p.published)).slice(0,6);
+  document.getElementById("ticker").innerHTML = items.map(p=>`<a href="#${p.id}" onclick="openPost('${p.id}');return false;">${p.title}</a>`).join("");
+}
 
 function star(cx,cy,r){
   let pts=[];
@@ -366,24 +475,27 @@ function thumb(p, cls="thumb"){
 }
 
 function render(){
-  document.getElementById("filters").innerHTML = tags.map(t=>
-    `<button class="chip ${t===active?'on':''}" onclick="setTag('${t}')">${t}</button>`).join("");
-  const list = posts.filter(p=>active==="All"||p.tag===active);
+  document.getElementById("secTitle").textContent = CAT[cat][lang==="so"?0:1];
+  const inC = posts.filter(inCat);
+  const ctags = ["All", ...new Set(inC.map(p=>p.tag))];
+  document.getElementById("filters").innerHTML = ctags.length>2 ? ctags.map(t=>
+    `<button class="chip ${t===active?'on':''}" onclick="setTag('${t}')">${tagName(t)}</button>`).join("") : "";
+  const list = inC.filter(p=>active==="All"||p.tag===active);
   const feat = active==="All" ? list.find(p=>p.featured) : null;
   const rest = list.filter(p=>p!==feat);
   document.getElementById("featured").innerHTML = feat ? `
     <article class="featured" onclick="openPost('${feat.id}')">
       ${thumb(feat)}
-      <div class="body"><span class="tag">Featured · ${feat.tag}</span>
+      <div class="body"><span class="tag">${lang==="so"?"Ugu muhiimsan":"Featured"} · ${tagName(feat.tag)}</span>
         <h3>${feat.title}</h3><p class="excerpt">${feat.excerpt}</p>
-        <p class="meta" style="margin-top:14px">${feat.date} · ${feat.read} read</p></div>
+        <p class="meta" style="margin-top:14px">${feat.date} · ${feat.read} ${readWord()}</p></div>
     </article>` : "";
   document.getElementById("grid").innerHTML = rest.map(p=>`
     <article class="card" onclick="openPost('${p.id}')">
       ${thumb(p)}
-      <div class="body"><span class="tag">${p.tag}</span><h3>${p.title}</h3>
-        <p class="excerpt">${p.excerpt}</p><p class="meta" style="margin-top:10px">${p.date} · ${p.read} read</p></div>
-    </article>`).join("");
+      <div class="body"><span class="tag">${tagName(p.tag)}</span><h3>${p.title}</h3>
+        <p class="excerpt">${p.excerpt}</p><p class="meta" style="margin-top:10px">${p.date} · ${p.read} ${readWord()}</p></div>
+    </article>`).join("") || `<p class="meta">${lang==="so"?"Weli maqaal kuma jiro qaybtan.":"No articles in this section yet."}</p>`;
 }
 function setTag(t){active=t;render();}
 
@@ -422,7 +534,8 @@ function route(){
   if(posts.some(p=>p.id===h)) openPost(h); else showHome();
 }
 window.addEventListener("hashchange", route);
-render(); route();
+try{ lang = localStorage.getItem("kj-lang") || "so"; }catch(e){}
+setLang(lang); ticker(); route();
 </script>
 <script>
 // Published articles open on their own pages
