@@ -1,4 +1,4 @@
-/* Kamjaroon Online: breadcrumb, share bar and font size for article pages */
+/* Hiigsi Media: breadcrumb, share bar and font size for article pages */
 (function () {
   var lang = "so";
   try { lang = localStorage.getItem("kj-lang") || "so"; } catch (e) {}
