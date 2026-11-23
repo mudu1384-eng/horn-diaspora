@@ -177,6 +177,7 @@ header .logo>span:nth-child(2){color:#fff !important}
 header .brand .tagline{color:#d8ebe8;font-size:clamp(.95rem,2.2vw,1.2rem);letter-spacing:.06em;display:flex;align-items:center;gap:14px}
 header .brand .tagline::before,header .brand .tagline::after{content:"";width:46px;height:2px;background:#e0a43a;opacity:.8}
 header .brand .btn{position:absolute;top:18px;right:16px}
+header .logo .kmo-logo{display:block;width:min(560px,88vw);height:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,.35))}
 @media(max-width:640px){header .brand.nav{padding:28px 14px 24px}header .logo .camel{width:96px;height:96px}header .brand .btn{position:static;margin-top:6px}header .brand .tagline::before,header .brand .tagline::after{width:24px}}
 </style>
 </head>
@@ -196,9 +197,8 @@ header .brand .btn{position:absolute;top:18px;right:16px}
 </div></div>
 <header>
   <div class="wrap nav brand">
-    <a href="#top" class="logo" onclick="nav('all');return false;"><span class="camel" aria-hidden="true"></span><span style="color:inherit">Kamjaroon</span> <span>Online</span></a>
+    <a href="#top" class="logo" onclick="nav('all');return false;"><img class="kmo-logo" src="kmo-logo-light.svg" alt="KMO - Kamjaroon Online" width="560" height="272"></a>
     <span class="tagline" data-so="Warar cad, fikrad xor ah." data-en="Clear news, free thinking.">Warar cad, fikrad xor ah.</span>
-    <a href="#subscribe" class="btn" onclick="goSection('subscribe')" data-so="Iska diiwaangeli" data-en="Subscribe">Iska diiwaangeli</a>
   </div>
 </header>
 <nav class="mainnav" aria-label="Main"><div class="wrap"><ul id="menu">
