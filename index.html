@@ -331,6 +331,13 @@ header .logo .kmo-logo{display:block;width:min(560px,88vw);height:auto;filter:dr
 <script>
 const posts = [
   {
+    id:"hassan-sheikh-uganda", tag:"Somalia", date:"Nov 24, 2026", read:"4 min", published:true, url:"hassan-sheikh-uganda.html",
+    title:"Hassan Sheikh visits Museveni as Ugandan troops start to leave Somalia",
+    excerpt:"Somalia's president made a one-day visit to Uganda on 23 November to discuss security, Ugandan troops leaving Somalia, and the political crisis at home.",
+    color:["#1b1f24","#0f6e6a"], featured:true, img:"hassan-museveni.webp",
+    body:`<p><a href="hassan-sheikh-uganda.html">Read the full article</a></p>`
+  },
+  {
     id:"axmed-madoobe", tag:"Somalia", date:"Nov 20, 2026", read:"9 min", published:true, url:"axmed-madoobe.html",
     title:"Axmed Madoobe iyo Xasan Sheekh: Khudbaddii Kismaayo, eedeymaha iyo su’aasha dowladnimada",
     excerpt:"Warbixin (Af-Soomaali): khudbaddii Axmed Madoobe ee Kismaayo, taariikhdiisa, 14 sano oo uu Jubbaland xukumayay, eedeymaha dhaleeceeyayaashiisa iyo doodaha taageerayaashiisa.",
@@ -438,7 +445,7 @@ const tags = ["All", ...new Set(posts.map(p=>p.tag))];
 let active = "All";
 let cat = "all";
 let lang = "so";
-const POL = new Set(["soomaaliya-imaaraadka","hassan-sheikh-uae","hassan-uae-u-turn","ethiopia-sea-access","somalia-this-week","youth-and-politics"]);
+const POL = new Set(["hassan-sheikh-uganda","soomaaliya-imaaraadka","hassan-sheikh-uae","hassan-uae-u-turn","ethiopia-sea-access","somalia-this-week","youth-and-politics"]);
 const TAG_SO = {"All":"Dhammaan","Somalia":"Soomaaliya","Opinion":"Aragti","Horn of Africa":"Geeska Afrika","Diaspora":"Qurbajoog","Kenya":"Kenya","Canada":"Kanada","Society":"Bulsho"};
 const CAT = {all:["Wararkii ugu dambeeyay","Latest articles"], gudaha:["Wararka Gudaha","Local News"], caalamka:["Wararka Caalamka","World News"], siyaasadda:["Siyaasadda","Politics"], aragtida:["Aragtida","Opinion"]};
 const tagName = t => lang==="so" ? (TAG_SO[t]||t) : t;
